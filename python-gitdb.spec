@@ -11,16 +11,16 @@ License:	BSD
 Group: 		Development/Python
 Url: 		http://pypi.python.org/pypi/gitdb
 Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
+Patch0:     gitdb-0.5.2-fix_symbol_visibility.patch 
 BuildRequires:  python-distribute
-BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
-GitDB is a pure-Python git object database.
+GitDB is a Python git object database.
 
 %prep
 %setup -q -n %upstream_name-%version
-
+%patch -p0 
 %build
 python setup.py build
 
@@ -37,5 +37,5 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc AUTHORS README
-%{python_sitelib}/gitdb
-%{python_sitelib}/gitdb-%{version}-py%{pyver}.egg-info
+%{python_sitearch}/gitdb
+%{python_sitearch}/gitdb-%{version}-py%{pyver}.egg-info

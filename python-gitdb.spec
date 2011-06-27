@@ -20,7 +20,7 @@ GitDB is a Python git object database.
 
 %prep
 %setup -q -n %upstream_name-%version
-%patch -p0 
+%patch0 -p0 
 %build
 python setup.py build
 

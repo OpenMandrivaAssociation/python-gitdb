@@ -1,7 +1,7 @@
 %define upstream_name gitdb
 %define name    python-%{upstream_name}
 %define version 0.5.2
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 		%{name}
 Version: 	%{version}
@@ -13,6 +13,7 @@ Url: 		http://pypi.python.org/pypi/gitdb
 Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
 Patch0:     gitdb-0.5.2-fix_symbol_visibility.patch 
 BuildRequires:  python-distribute
+Requires:       python-async
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
@@ -26,7 +27,7 @@ python setup.py build
 
 %install
 rm -rf %{buildroot}
-python setup.py install --root=%{buildroot}
+python setup.py install --root=%{buildroot} --install-purelib=%{python_sitelib}
 
 rm -f %{buildroot}%{python_sitelib}/gitdb/README
 rm -f %{buildroot}%{python_sitelib}/gitdb/AUTHORS

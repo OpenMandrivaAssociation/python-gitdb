@@ -1,7 +1,7 @@
 %define upstream_name gitdb
 %define name    python-%{upstream_name}
-%define version 0.5.2
-%define release %mkrel 2
+%define version 0.5.3
+%define release %mkrel 1
 
 Name: 		%{name}
 Version: 	%{version}
@@ -10,18 +10,20 @@ Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python
 Url: 		http://pypi.python.org/pypi/gitdb
-Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
-Patch0:     gitdb-0.5.2-fix_symbol_visibility.patch 
+Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitpython-developers-gitdb-%{version}-0-g4524faf.tar.gz
 BuildRequires:  python-distribute
+BuildRequires:  python-async
+BuildRequires:  python-smmap
 Requires:       python-async
+Requires:       python-smmap
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 GitDB is a Python git object database.
 
 %prep
-%setup -q -n %upstream_name-%version
-%patch0 -p0 
+%setup -q -n gitpython-developers-gitdb-4524faf
+
 %build
 python setup.py build
 
@@ -37,6 +39,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS README
+%doc AUTHORS README.rst
 %{python_sitearch}/gitdb
 %{python_sitearch}/gitdb-%{version}-py%{pyver}.egg-info

@@ -1,44 +1,35 @@
 %define upstream_name gitdb
-%define name    python-%{upstream_name}
-%define version 0.5.3
-%define release %mkrel 1
 
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
+Name: 		python-%{upstream_name}
+Version: 	0.5.4
+Release: 	1
 Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python
 Url: 		http://pypi.python.org/pypi/gitdb
-Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitpython-developers-gitdb-%{version}-0-g4524faf.tar.gz
+Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
 BuildRequires:  python-distribute
 BuildRequires:  python-async
 BuildRequires:  python-smmap
 Requires:       python-async
 Requires:       python-smmap
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 GitDB is a Python git object database.
 
 %prep
-%setup -q -n gitpython-developers-gitdb-4524faf
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 python setup.py build
 
 %install
-rm -rf %{buildroot}
-python setup.py install --root=%{buildroot} --install-purelib=%{python_sitelib}
+python setup.py install --root=%{buildroot} --install-purelib=%{py_puresitedir}
 
-rm -f %{buildroot}%{python_sitelib}/gitdb/README
-rm -f %{buildroot}%{python_sitelib}/gitdb/AUTHORS
-
-%clean
-rm -rf %{buildroot}
+rm -f %{buildroot}%{py_puresitedir}/gitdb/README
+rm -f %{buildroot}%{py_puresitedir}/gitdb/AUTHORS
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS README.rst
-%{python_sitearch}/gitdb
-%{python_sitearch}/gitdb-%{version}-py%{pyver}.egg-info
+%doc AUTHORS
+%{py_platsitedir}/gitdb
+%{py_platsitedir}/gitdb-%{version}-py%{py_ver}.egg-info

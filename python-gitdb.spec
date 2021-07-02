@@ -1,6 +1,7 @@
-%define upstream_name gitdb
+%define debug_package %{nil}
+%define pypi_name gitdb
 
-Name: 		python-%{upstream_name}
+Name: 		python-%{pypi_name}
 Version: 	4.0.7
 Release: 	1
 Summary: 	Git Object Database
@@ -16,7 +17,7 @@ Requires:       python-smmap
 GitDB is a Python git object database.
 
 %prep
-%setup -q -n %{upstream_name}-%{version}
+%autosetup -n %{pypi_name}-%{version}
 
 %build
 %py3_build
@@ -24,10 +25,8 @@ GitDB is a Python git object database.
 %install
 %py3_install
 
-rm -f %{buildroot}%{py_puresitedir}/gitdb/README
-rm -f %{buildroot}%{py_puresitedir}/gitdb/AUTHORS
-
-%files
+%files -n python-%{pypi_name}
+%license LICENSE
 %doc AUTHORS
-%{python3_sitelib}/gitdb/
-%{python3_sitelib}/gitdb-%{version}-py%{py_ver}.egg-info/
+%{python3_sitelib}/%{pypi_name}
+%{python3_sitelib}/%{pypi_name}-%{version}-py%{py_ver}.egg-info

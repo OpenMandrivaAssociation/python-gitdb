@@ -2,13 +2,13 @@
 %define pypi_name gitdb
 
 Name: 		python-%{pypi_name}
-Version: 	4.0.7
+Version: 	4.0.9
 Release: 	1
 Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python
 Url: 		http://pypi.python.org/pypi/gitdb
-Source0: 	http://pypi.python.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
+Source0: 	https://files.pythonhosted.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
 BuildRequires:  python-distribute
 BuildRequires:  python-smmap
 Requires:       python-smmap

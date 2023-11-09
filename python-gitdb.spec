@@ -2,7 +2,7 @@
 %define pypi_name gitdb
 
 Name: 		python-%{pypi_name}
-Version: 	4.0.10
+Version: 	4.0.11
 Release: 	1
 Summary: 	Git Object Database
 License:	BSD

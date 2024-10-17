@@ -7,7 +7,7 @@ Release: 	1
 Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python
-Url: 		http://pypi.python.org/pypi/gitdb
+Url: 		https://pypi.python.org/pypi/gitdb
 Source0: 	https://files.pythonhosted.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
 BuildRequires:  python-distribute
 BuildRequires:  python-smmap

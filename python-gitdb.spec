@@ -3,7 +3,7 @@
 
 Name: 		python-%{pypi_name}
 Version: 	4.0.12
-Release: 	1
+Release: 	2
 Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python

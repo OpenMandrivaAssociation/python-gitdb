@@ -3,15 +3,17 @@
 
 Name: 		python-%{pypi_name}
 Version: 	4.0.12
-Release: 	3
+Release:	4
 Summary: 	Git Object Database
 License:	BSD
 Group: 		Development/Python
 Url: 		https://pypi.python.org/pypi/gitdb
 Source0: 	https://files.pythonhosted.org/packages/source/g/gitdb/gitdb-%{version}.tar.gz
-BuildRequires:  python-distribute
-BuildRequires:  python-smmap
-Requires:       python-smmap
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(smmap)
+BuildRequires:	python%{pyver}dist(wheel)
+Requires:	python%{pyver}dist(smmap)
 
 %description
 GitDB is a Python git object database.
@@ -29,4 +31,4 @@ GitDB is a Python git object database.
 %license LICENSE
 %doc AUTHORS
 %{python3_sitelib}/%{pypi_name}
-%{python3_sitelib}/%{pypi_name}-%{version}-py%{py_ver}.egg-info
+%{python3_sitelib}/%{pypi_name}-*.*-info
